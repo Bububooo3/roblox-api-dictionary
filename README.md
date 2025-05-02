@@ -1,27 +1,27 @@
 > Note: I will eventually figure out how to host this API online for free
 
 # Tutorial
-Let's say the site is `http://127.0.0.1:8000` for example (because idk how to host online)
+Let's say the site is `http://rblx-api-dict.com` for example (because idk how to host online)
 
 ### Get Entire Dictionary
-If you want to get the entire dictionary, you should use the `GET` method on `http://127.0.0.1:8000` or `http://127.0.0.1:8000/root`
+If you want to get the entire dictionary, you should use the `GET` method on `http://rblx-api-dict.com` or `http://rblx-api-dict.com/root`
 
 ### Get Classes
 > Basically the entire dictionary
 
-If you want to retrieve the classes section, you should use the `GET` method on `http://127.0.0.1:8000/classes`
+If you want to retrieve the classes section, you should use the `GET` method on `http://rblx-api-dict.com/classes`
 
 ### Get Information About a DataType
-If you want to get information about a datatype (ex. BasePart), you should use the `GET` method on `http://127.0.0.1:8000/instance?target=DATATYPE_NAME`
+If you want to get information about a datatype (ex. BasePart), you should use the `GET` method on `http://rblx-api-dict.com/instance?target=DATATYPE_NAME`
 
 ### Get Properties of a DataType
-If you want to get the properties of a datatype, you should use the `GET` method on `http://127.0.0.1:8000/properties?target=DATATYPE_NAME`
+If you want to get the properties of a datatype, you should use the `GET` method on `http://rblx-api-dict.com/properties?target=DATATYPE_NAME`
 <br>
 <hr>
 <br>
 
 # Example
-For example, if I wanted to retrieve the properties of `AnimationTrack`, I would send an http request (`GET`) to `http://127.0.0.1:8000/properties?target=AnimationTrack`
+For example, if I wanted to retrieve the properties of `AnimationTrack`, I would send an http request (`GET`) to `http://rblx-api-dict.com/properties?target=AnimationTrack`
 
 In return, I would get this data (JSON Encoded) which details a list of all of the properties of the `AnimationTrack` class:
 
