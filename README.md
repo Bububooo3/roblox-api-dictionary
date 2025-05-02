@@ -1,0 +1,136 @@
+> Note: I will eventually figure out how to host this API online for free
+
+# Tutorial
+Let's say the site is `http://127.0.0.1:8000` for example (because idk how to host online)
+
+### Get Entire Dictionary
+If you want to get the entire dictionary, you should use the `GET` method on `http://127.0.0.1:8000` or `http://127.0.0.1:8000/root`
+
+### Get Classes
+> Basically the entire dictionary
+
+If you want to retrieve the classes section, you should use the `GET` method on `http://127.0.0.1:8000/classes`
+
+### Get an Instance
+If you want to get data about an instance, you should use the `GET` method on `http://127.0.0.1:8000/instance?target=INSTANCE_NAME`
+
+### Get Properties of a DataType
+If you want to get the properties of a datatype (ex. BasePart), you should use the `GET` method on `http://127.0.0.1:8000/properties?target=INSTANCE_NAME`
+<br>
+<hr>
+<br>
+
+# Example
+For example, if I wanted to retrieve the properties of `AnimationTrack`, I would send an http request (`GET`) to `http://127.0.0.1:8000/properties?target=AnimationTrack`
+
+In return, I would get this data (JSON Encoded) which details a list of all of the properties of the `AnimationTrack` class:
+
+```json
+{
+  "Animation": {
+    "Capabilities": [
+      "Animation"
+    ],
+    "Name": "Animation",
+    "ReadOnly": true,
+    "Tags": [
+      "ReadOnly",
+      "NotReplicated"
+    ],
+    "ValueType": "Animation"
+  },
+  "IsPlaying": {
+    "Capabilities": [
+      "Animation"
+    ],
+    "Name": "IsPlaying",
+    "ReadOnly": true,
+    "Tags": [
+      "ReadOnly",
+      "NotReplicated"
+    ],
+    "ValueType": "bool"
+  },
+  "Length": {
+    "Capabilities": [
+      "Animation"
+    ],
+    "Name": "Length",
+    "ReadOnly": true,
+    "Tags": [
+      "ReadOnly",
+      "NotReplicated"
+    ],
+    "ValueType": "float"
+  },
+  "Looped": {
+    "Capabilities": [
+      "Animation"
+    ],
+    "Name": "Looped",
+    "ReadOnly": true,
+    "Tags": {
+
+    },
+    "ValueType": "bool"
+  },
+  "Priority": {
+    "Capabilities": [
+      "Animation"
+    ],
+    "Name": "Priority",
+    "ReadOnly": true,
+    "Tags": {
+
+    },
+    "ValueType": "AnimationPriority"
+  },
+  "Speed": {
+    "Capabilities": [
+      "Animation"
+    ],
+    "Name": "Speed",
+    "ReadOnly": true,
+    "Tags": [
+      "ReadOnly",
+      "NotReplicated"
+    ],
+    "ValueType": "float"
+  },
+  "TimePosition": {
+    "Capabilities": [
+      "Animation"
+    ],
+    "Name": "TimePosition",
+    "ReadOnly": true,
+    "Tags": [
+      "NotReplicated"
+    ],
+    "ValueType": "float"
+  },
+  "WeightCurrent": {
+    "Capabilities": [
+      "Animation"
+    ],
+    "Name": "WeightCurrent",
+    "ReadOnly": true,
+    "Tags": [
+      "ReadOnly",
+      "NotReplicated"
+    ],
+    "ValueType": "float"
+  },
+  "WeightTarget": {
+    "Capabilities": [
+      "Animation"
+    ],
+    "Name": "WeightTarget",
+    "ReadOnly": true,
+    "Tags": [
+      "ReadOnly",
+      "NotReplicated"
+    ],
+    "ValueType": "float"
+  }
+}
+```
