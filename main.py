@@ -1,16 +1,14 @@
-# This is a sample Python script.
+from fastapi import FastAPI, Response
+import json
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+app = FastAPI()
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+@app.get("/json-file")
+async def read_json_file():
+    # Read data from the JSON file
+    with open("data.json", "r") as file:
+        data = json.load(file)
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    # Return the data as a JSON response
+    return Response(content=json.dumps(data), media_type="application/json")
