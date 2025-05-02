@@ -11,11 +11,11 @@ If you want to get the entire dictionary, you should use the `GET` method on `ht
 
 If you want to retrieve the classes section, you should use the `GET` method on `http://127.0.0.1:8000/classes`
 
-### Get an Instance
-If you want to get data about an instance, you should use the `GET` method on `http://127.0.0.1:8000/instance?target=INSTANCE_NAME`
+### Get Information About a DataType
+If you want to get information about a datatype (ex. BasePart), you should use the `GET` method on `http://127.0.0.1:8000/instance?target=DATATYPE_NAME`
 
 ### Get Properties of a DataType
-If you want to get the properties of a datatype (ex. BasePart), you should use the `GET` method on `http://127.0.0.1:8000/properties?target=INSTANCE_NAME`
+If you want to get the properties of a datatype, you should use the `GET` method on `http://127.0.0.1:8000/properties?target=INSTANCE_NAME`
 <br>
 <hr>
 <br>
