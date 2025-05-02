@@ -1,14 +1,74 @@
-from fastapi import FastAPI, Response
+from flask import Flask, jsonify, request
 import json
+# import functions
 
-app = FastAPI()
+app = Flask(__name__)
 
+# API Methods
 
-@app.get("/json-file")
-async def read_json_file():
-    # Read data from the JSON file
-    with open("data.json", "r") as file:
-        data = json.load(file)
+# ROOT METHODS
+@app.route("/", methods=["GET"])
+def root():
+    try:
+        return jsonify(json.load(open('src/API-Dump.json', 'r')))
+    except FileNotFoundError:
+        return jsonify({'error': 'API not found'}), 404
 
-    # Return the data as a JSON response
-    return Response(content=json.dumps(data), media_type="application/json")
+@app.route("/root", methods=["GET"])
+def get_root():
+    try:
+        return jsonify(json.load(open('src/API-Dump.json', 'r')))
+    except FileNotFoundError:
+        return jsonify({'error': 'API not found'}), 404
+
+# Classes Container
+@app.route("/classes", methods=["GET"])
+def get_classes():
+    try:
+        f = json.load(open('src/API-Dump.json', 'r'))
+        return jsonify(f["Classes"])
+    except FileNotFoundError:
+        return jsonify({'error': 'Classes container not found'}), 404
+
+# Instances
+@app.route("/instance", methods=["GET"])
+def get_instances():
+    instance = request.args.get('target')
+
+    data = json.load(open('src/API-Dump.json', 'r'))
+    for index, class_data in enumerate(data["Classes"]):
+        # print(class_name)
+        if class_data["Name"].lower() == instance.lower():
+            return jsonify(data["Classes"][index])
+    return jsonify({'error': 'Instance not found'}), 404
+
+# Properties
+@app.route("/properties", methods=["GET"])
+def get_properties():
+    instance = request.args.get('target')
+    properties = {}
+
+    data = json.load(open('src/API-Dump.json', 'r'))
+    for index, class_data in enumerate(data["Classes"]):
+        # print(class_name)
+        if class_data["Name"].lower() == instance.lower():
+            if class_data["Members"]:
+                for member in class_data["Members"]:
+                    if member["MemberType"] == "Property":
+                        p_temp = {
+                            "Name": member["Name"],
+                        "ValueType": member["ValueType"]["Name"],
+                        "ReadOnly": (member["Security"]["Read"] == "None"),
+                        "Tags": member["Tags"] if "Tags" in member else {},
+                        }
+
+                        if member["Capabilities"]:
+                            p_temp["Capabilities"] = member["Capabilities"]["Read"] if "Read" in member["Capabilities"] else {}
+                        if not properties.get(member["Name"]):
+                            properties[member["Name"]] = p_temp
+
+    if properties != {}: return jsonify(properties)
+    return jsonify({'error': 'Instance not found'}), 404
+
+if __name__ == '__main__':
+    app.run()
