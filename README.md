@@ -1,6 +1,6 @@
-> Note: I will eventually figure out how to host this API online for free
-
 # Tutorial
+[Github Repository Link](https://github.com/Bububooo3/roblox-api-dictionary)
+
 Let's say the site is `http://rblx-api-dict.com` for example (because idk how to host online)
 
 ### Get Entire Dictionary
