@@ -20,6 +20,7 @@ If you want to get the properties of a datatype, you should use the `GET` method
 <hr>
 <br>
 
+
 # Example
 For example, if I wanted to retrieve the properties of `AnimationTrack`, I would send an http request (`GET`) to `http://rblx-api-dict.com/properties?target=AnimationTrack`
 
